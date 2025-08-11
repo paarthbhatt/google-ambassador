@@ -30,10 +30,10 @@ function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 transform animate-fade-in-up">
+      <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 transform animate-fade-in-up max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200 z-10"
         >
           <X className="w-6 h-6" />
         </button>
@@ -42,33 +42,33 @@ function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
             <Mail className="w-8 h-8 text-white" />
           </div>
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             Let's Connect!
           </h3>
-          <p className="text-gray-600">Ready to innovate together</p>
+          <p className="text-sm sm:text-base text-gray-600">Ready to innovate together</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200">
-            <Mail className="w-5 h-5 text-blue-600" />
-            <span className="text-gray-700">paarthbhatt37@gmail.com</span>
+            <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0" />
+            <span className="text-gray-700 text-sm sm:text-base break-all">paarthbhatt37@gmail.com</span>
           </div>
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200">
-            <Phone className="w-5 h-5 text-green-600" />
-            <span className="text-gray-700">+91 8920948990</span>
+            <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
+            <span className="text-gray-700 text-sm sm:text-base">+91 8920948990</span>
           </div>
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200">
-            <MapPin className="w-5 h-5 text-red-600" />
-            <span className="text-gray-700">New Delhi, INDIA</span>
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 flex-shrink-0" />
+            <span className="text-gray-700 text-sm sm:text-base">New Delhi, INDIA</span>
           </div>
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200">
-            <Calendar className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">Available for immediate start</span>
+            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 flex-shrink-0" />
+            <span className="text-gray-700 text-sm sm:text-base">Available for immediate start</span>
           </div>
         </div>
 
         <div className="mt-6 pt-6 border-t border-gray-200">
-          <p className="text-sm text-gray-500 text-center">
+          <p className="text-xs sm:text-sm text-gray-500 text-center">
             Excited to discuss how I can contribute to Google's mission as a Student Ambassador
           </p>
         </div>
@@ -98,18 +98,18 @@ function Header() {
           scrolled ? "bg-white/90 backdrop-blur-lg shadow-xl" : "bg-transparent"
         }`}
       >
-        <nav className="container mx-auto px-6 py-4">
+        <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Left side - Google Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-700">
-                <img src="https://www.google.com/favicon.ico" alt="Google" className="w-6 h-6" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-700">
+                <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4 sm:w-6 sm:h-6" />
               </div>
             </div>
 
-            {/* Center - Parth Bhatt */}
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+            {/* Center - Parth Bhatt - Hidden on small screens */}
+            <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
                 Parth Bhatt
               </span>
             </div>
@@ -118,9 +118,19 @@ function Header() {
             <div className="flex items-center">
               <button
                 onClick={() => setShowContactModal(true)}
-                className="bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 text-white px-8 py-3 rounded-full hover:shadow-2xl hover:scale-110 transition-all duration-300 font-semibold text-lg shadow-lg"
+                className="bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 text-white px-4 sm:px-8 py-2 sm:py-3 rounded-full hover:shadow-2xl hover:scale-110 transition-all duration-300 font-semibold text-sm sm:text-lg shadow-lg"
               >
-                HIRE ME
+                <span className="hidden sm:inline">HIRE ME</span>
+                <span className="sm:hidden">HIRE</span>
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button 
+                className="sm:hidden ml-2 p-2" 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
@@ -133,13 +143,20 @@ function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 animate-fade-in">
-            <div className="flex flex-col items-center">
+          <div className="sm:hidden mt-4 pb-4 px-4 animate-fade-in bg-white/95 backdrop-blur-lg">
+            <div className="flex flex-col items-center space-y-4">
+              {/* Mobile Parth Bhatt Title */}
+              <span className="text-lg font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+                Parth Bhatt
+              </span>
               <button
-                onClick={() => setShowContactModal(true)}
-                className="bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 text-white px-8 py-3 rounded-full hover:shadow-2xl hover:scale-110 transition-all duration-300 font-semibold text-lg shadow-lg"
+                onClick={() => {
+                  setShowContactModal(true)
+                  setIsMenuOpen(false)
+                }}
+                className="bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 text-white px-6 py-2 rounded-full hover:shadow-2xl hover:scale-110 transition-all duration-300 font-semibold text-base shadow-lg"
               >
-                HIRE ME
+                CONTACT ME
               </button>
             </div>
           </div>
@@ -193,9 +210,9 @@ function HeroSection() {
         <div className="floating-element absolute bottom-20 right-10 w-18 h-18 bg-gradient-to-br from-green-400 to-green-600 rounded-full opacity-20 animate-float-delayed"></div>
       </div>
 
-      <div className="relative z-10 text-center px-6 animate-fade-in-up">
-        <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 transform hover:scale-105 transition-transform duration-500">
+      <div className="relative z-10 text-center px-4 sm:px-6 animate-fade-in-up">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 transform hover:scale-105 transition-transform duration-500 leading-tight">
             <span className="bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
               Hello, Google!
             </span>
@@ -205,27 +222,27 @@ function HeroSection() {
               Parth Bhatt
             </span>
           </h1>
-          <p className="text-xl md:text-3xl text-gray-600 mb-8 animate-fade-in-delayed">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 sm:mb-8 animate-fade-in-delayed leading-relaxed px-2">
             Your next <span className="text-blue-600 font-semibold">Student Ambassador</span>, ready to innovate with{" "}
             <span className="text-red-500 font-semibold">Google</span> &{" "}
             <span className="text-purple-600 font-semibold">Gemini AI</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="group relative bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 text-white px-8 py-4 rounded-full shadow-2xl hover:shadow-blue-500/25 transform hover:scale-110 hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
+          <button className="group relative bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-2xl hover:shadow-blue-500/25 transform hover:scale-110 hover:-translate-y-2 transition-all duration-500 overflow-hidden w-full sm:w-auto">
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 via-green-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative flex items-center gap-2">
-              <Sparkles className="w-5 h-5 group-hover:animate-spin" />
-              My Pitch
-              <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <div className="relative flex items-center justify-center gap-2">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-spin" />
+              <span className="text-sm sm:text-base font-semibold">My Pitch</span>
+              <Rocket className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </button>
 
-          <button className="group bg-white/80 backdrop-blur-sm text-green-600 px-8 py-4 rounded-full border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-            <div className="flex items-center gap-2">
-              <Code className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              View Certifications
+          <button className="group bg-white/80 backdrop-blur-sm text-green-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+            <div className="flex items-center justify-center gap-2">
+              <Code className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-sm sm:text-base font-semibold">View Certifications</span>
             </div>
           </button>
         </div>
@@ -279,39 +296,39 @@ function CertificationsSection() {
   ]
 
   return (
-    <section id="certifications" className="py-20 px-6 bg-gradient-to-br from-blue-50 to-green-50">
+    <section id="certifications" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-50 to-green-50">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
             <span className="bg-gradient-to-r from-blue-600 via-green-600 to-red-600 bg-clip-text text-transparent">
               Professional Certifications
             </span>
           </h2>
-          <p className="text-xl text-gray-600">Validated expertise in cutting-edge technologies</p>
+          <p className="text-lg sm:text-xl text-gray-600">Validated expertise in cutting-edge technologies</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transform hover:-translate-y-4 hover:rotate-1 transition-all duration-500 card-3d overflow-hidden"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transform hover:-translate-y-4 hover:rotate-1 transition-all duration-500 card-3d overflow-hidden"
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${cert.bgGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
               ></div>
 
               <div
-                className={`relative w-14 h-14 bg-gradient-to-br ${cert.bgGradient} rounded-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
+                className={`relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br ${cert.bgGradient} rounded-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
               >
-                <cert.icon className="w-7 h-7 text-white" />
+                <cert.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
 
-              <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
+              <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
                 {cert.title}
               </h3>
-              <p className="text-md text-gray-600 mb-1">{cert.issuer}</p>
-              <p className="text-sm text-gray-500 mb-3">{cert.date}</p>
-              <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+              <p className="text-sm sm:text-md text-gray-600 mb-1">{cert.issuer}</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-3">{cert.date}</p>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                 {cert.description}
               </p>
 
@@ -363,40 +380,40 @@ function AchievementsSection() {
   ]
 
   return (
-    <section id="achievements" className="py-20 px-6">
+    <section id="achievements" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
             <span className="bg-gradient-to-r from-red-600 via-yellow-600 to-green-600 bg-clip-text text-transparent">
               Key Achievements
             </span>
           </h2>
-          <p className="text-xl text-gray-600">Transforming ideas into impactful solutions</p>
+          <p className="text-lg sm:text-xl text-gray-600">Transforming ideas into impactful solutions</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
           {achievements.map((achievement, index) => (
             <div
               key={index}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-4 hover:rotate-1 transition-all duration-500 card-3d overflow-hidden"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-4 hover:rotate-1 transition-all duration-500 card-3d overflow-hidden"
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${achievement.bgGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
               ></div>
 
               <div
-                className={`relative w-16 h-16 bg-gradient-to-br ${achievement.bgGradient} rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
+                className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${achievement.bgGradient} rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}
               >
-                <achievement.icon className="w-8 h-8 text-white" />
+                <achievement.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
               </div>
 
-              <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300 leading-tight">
                 {achievement.title}
               </h3>
-              <p className="text-lg text-purple-600 font-semibold mb-2">{achievement.subtitle}</p>
+              <p className="text-base sm:text-lg text-purple-600 font-semibold mb-2">{achievement.subtitle}</p>
               <p className="text-sm text-gray-600 mb-1">{achievement.issuer}</p>
-              <p className="text-sm text-gray-500 mb-4">{achievement.date}</p>
-              <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+              <p className="text-sm text-gray-500 mb-3 sm:mb-4">{achievement.date}</p>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                 {achievement.description}
               </p>
 
@@ -457,40 +474,40 @@ function Footer() {
         ></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold mb-4">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="text-center mb-8 sm:mb-12">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-400 via-red-400 to-yellow-400 bg-clip-text text-transparent">
               Let's Connect & Innovate Together
             </span>
           </h3>
-          <p className="text-xl text-gray-300">Ready to make an impact with Google and Gemini AI</p>
+          <p className="text-lg sm:text-xl text-gray-300">Ready to make an impact with Google and Gemini AI</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {links.map((link, index) => (
             <a
               key={index}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex flex-col items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-6 rounded-2xl ${link.hoverColor} transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl`}
+              className={`group relative flex flex-col items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-3 sm:px-6 py-4 sm:py-6 rounded-2xl ${link.hoverColor} transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl`}
             >
               <div
-                className={`w-12 h-12 bg-gradient-to-r ${link.bgColor} rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500`}
+                className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${link.bgColor} rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500`}
               >
-                <link.icon className="w-6 h-6 text-white" />
+                <link.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-sm font-medium text-center">{link.label}</span>
+              <span className="text-xs sm:text-sm font-medium text-center leading-tight">{link.label}</span>
 
               <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-white/20 transition-all duration-500"></div>
             </a>
           ))}
         </div>
 
-        <div className="text-center border-t border-white/20 pt-8">
-          <p className="text-gray-400 mb-2">© 2024 Parth Bhatt. Crafted with ❤️ and powered by innovation.</p>
-          <p className="text-sm text-gray-500">
+        <div className="text-center border-t border-white/20 pt-6 sm:pt-8">
+          <p className="text-gray-400 mb-2 text-sm sm:text-base">© 2024 Parth Bhatt. Crafted with ❤️ and powered by innovation.</p>
+          <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
             Ready to represent Google's mission of organizing the world's information
           </p>
         </div>

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Parth Bhatt for Google Ambassador',
   description: 'Created with v0',
   generator: 'v0.dev',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
   icons: {
     icon: 'https://www.google.com/favicon.ico',
   },
