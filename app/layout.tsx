@@ -4,13 +4,9 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Parth Bhatt for Google Ambassador',
+  title: 'v0 App',
   description: 'Created with v0',
   generator: 'v0.dev',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
-  icons: {
-    icon: 'https://www.google.com/favicon.ico',
-  },
 }
 
 export default function RootLayout({
