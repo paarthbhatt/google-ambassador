@@ -8,8 +8,6 @@ import {
   MapPin,
   Clock,
   X,
-  Sun,
-  Moon,
   Award,
   Users,
   Briefcase,
@@ -20,7 +18,9 @@ import {
   Star,
   Code,
   Zap,
-  Target,
+  Linkedin,
+  Github,
+  XIcon as TwitterX,
 } from "lucide-react"
 
 // Contact Modal Component
@@ -63,26 +63,75 @@ function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
   )
 }
 
+// Pitch Modal Component
+function PitchModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-lg w-full mx-4 shadow-2xl transform animate-scale-in">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+            Why I Should Be a Google Ambassador
+          </h3>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors duration-200"
+          >
+            <X className="w-5 h-5 text-gray-500" />
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          <div className="flex items-start gap-3">
+            <Award className="w-5 h-5 text-yellow-500 mt-1 flex-shrink-0" />
+            <p className="text-gray-700 dark:text-gray-300">
+              <strong>Proven Winner:</strong> Top 3 in MCA Eagles' CodeNest 2025 and 1st place at Design Dojo,
+              demonstrating excellence in innovation and design thinking.
+            </p>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <Shield className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
+            <p className="text-gray-700 dark:text-gray-300">
+              <strong>Cybersecurity Expertise:</strong> Certified in threat intelligence and security analysis, bringing
+              critical skills for Google's security initiatives.
+            </p>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <Building className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+            <p className="text-gray-700 dark:text-gray-300">
+              <strong>Smart City Innovation:</strong> Developed Delhi Smart City Command Center, showcasing ability to
+              create impactful tech solutions for real-world problems.
+            </p>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <Users className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+            <p className="text-gray-700 dark:text-gray-300">
+              <strong>Community Impact:</strong> Ready to inspire students, promote Google technologies, and bridge the
+              gap between innovation and education.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // Enhanced Header Component
 function Header({
   isContactOpen,
   setIsContactOpen,
-  isPitchOpen,
-  setIsPitchOpen,
-  isDarkMode,
-  setIsDarkMode,
 }: {
   isContactOpen: boolean
   setIsContactOpen: (open: boolean) => void
-  isPitchOpen: boolean
-  setIsPitchOpen: (open: boolean) => void
-  isDarkMode: boolean
-  setIsDarkMode: (mode: boolean) => void
 }) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20 shadow-lg transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Google Logo */}
           <div className="flex items-center">
             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300">
@@ -92,28 +141,18 @@ function Header({
 
           {/* Centered Name */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-green-600 bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
               Parth Bhatt
             </h1>
           </div>
 
-          {/* Right Side - Dark Mode Toggle & Hire Me */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
-              title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            >
-              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-
-            <button
-              onClick={() => setIsContactOpen(true)}
-              className="px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 hover:from-blue-700 hover:via-red-600 hover:to-yellow-600 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              HIRE ME
-            </button>
-          </div>
+          {/* HIRE ME Button */}
+          <button
+            onClick={() => setIsContactOpen(true)}
+            className="px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            HIRE ME
+          </button>
         </div>
       </div>
     </header>
@@ -298,19 +337,25 @@ function AchievementsSection() {
   )
 }
 
-// Enhanced Footer with updated social links
+// Enhanced Footer with header-matching styling
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 dark:from-gray-900 dark:via-black dark:to-gray-900 text-white py-8">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-t border-gray-200/20 dark:border-gray-700/20 shadow-lg transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
-          <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-            Let's Connect & Innovate Together
-          </h3>
-          <div className="flex justify-center gap-6">
+          <div className="flex items-center justify-center mb-6">
+            <div className="w-8 h-8 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg mr-3">
+              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+              Let's Connect & Innovate Together
+            </h3>
+          </div>
+
+          <div className="flex justify-center gap-4 mb-6">
             <a
               href="mailto:paarthbhatt37@gmail.com"
-              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               <Mail className="w-4 h-4" />
               <span className="text-sm font-medium">Email</span>
@@ -319,31 +364,32 @@ function Footer() {
               href="https://www.linkedin.com/in/parth-bhatt-07bb36310/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              <Users className="w-4 h-4" />
+              <Linkedin className="w-4 h-4" />
               <span className="text-sm font-medium">LinkedIn</span>
             </a>
             <a
               href="https://github.com/paarthbhatt"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              <GitBranch className="w-4 h-4" />
+              <Github className="w-4 h-4" />
               <span className="text-sm font-medium">GitHub</span>
             </a>
             <a
               href="https://x.com/thatsparthbhatt"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-black hover:from-black hover:to-gray-800 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-800 to-black hover:from-black hover:to-gray-900 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              <Target className="w-4 h-4" />
+              <TwitterX className="w-4 h-4" />
               <span className="text-sm font-medium">X</span>
             </a>
           </div>
-          <p className="text-gray-400 text-sm mt-4">© 2025 Parth Bhatt • Ready to innovate with Google</p>
+
+          <p className="text-gray-600 dark:text-gray-400 text-sm">© 2025 Parth Bhatt • Ready to innovate with Google</p>
         </div>
       </div>
     </footer>
@@ -351,46 +397,59 @@ function Footer() {
 }
 
 // Main App Component
-export default function Home() {
+export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [isPitchOpen, setIsPitchOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
+    const updateTheme = () => {
+      const now = new Date()
+      const hour = now.getHours()
+
+      // Dark mode from 6 PM (18:00) to 6 AM (06:00)
+      const isDarkMode = hour >= 18 || hour < 6
+      setIsDark(isDarkMode)
+      if (isDarkMode) {
+        document.documentElement.classList.add("dark")
+      } else {
+        document.documentElement.classList.remove("dark")
+      }
     }
-  }, [isDarkMode])
+
+    // Update theme immediately
+    updateTheme()
+
+    // Update theme every minute to catch time changes
+    const interval = setInterval(updateTheme, 60000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
-      {/* Header */}
-      <Header
-        isContactOpen={isContactOpen}
-        setIsContactOpen={setIsContactOpen}
-        isPitchOpen={isPitchOpen}
-        setIsPitchOpen={setIsPitchOpen}
-        isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
-      />
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? "dark" : ""}`}>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 transition-colors duration-300">
+        <Header isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />
 
-      {/* Hero Section */}
-      <HeroSection isPitchOpen={isPitchOpen} setIsPitchOpen={setIsPitchOpen} />
+        <main className="pt-16">
+          <HeroSection isPitchOpen={isPitchOpen} setIsPitchOpen={setIsPitchOpen} />
+          <CertificationsSection />
+          <AchievementsSection />
+        </main>
 
-      {/* Main Content */}
-      <main>
-        <CertificationsSection />
-        <AchievementsSection />
-      </main>
+        <Footer />
 
-      {/* Footer */}
-      <Footer />
+        {/* Contact Modal */}
+        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+
+        {/* Pitch Modal */}
+        <PitchModal isOpen={isPitchOpen} onClose={() => setIsPitchOpen(false)} />
+      </div>
     </div>
   )
 }
 
+// Hero Section Component
 function HeroSection({
   isPitchOpen,
   setIsPitchOpen,
